@@ -1,0 +1,13 @@
+.global-wrapper{
+    max-width: 1160px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header{
+    max-height: 100px;
+}
+
+header .header-left .logo img{
+    width: 100%;
+}
