@@ -11,9 +11,7 @@
 
 <header class="global-wrapper">
     <div class="header-left">
-        <div class="logo">
-            <img src="../resources/image/logo.png" alt="">
-        </div>
+        
     </div>
     <div class="header-right">
         
@@ -23,16 +21,20 @@
     <hr>
     <a href="{{ route('hotels.create') }}">Ajouter un hotel</a>
     <hr>
+    <table> 
+
+        @foreach ($hotels as $hotel)
+            <tr>
+                <td>{{ $hotel->id }}</td>
+                <td>{{ $hotel->nom }}</td>
+                <td>{{ $hotel->adresse }}</td>
+                <td>{{ $hotel->étoile }}</td>
+                <td>{{ $hotel->prix }}</td>
+            </tr>
+        @endforeach
+
+    </table>
     
-@foreach ($hotels as $hotel)
-    <tr>
-        <td>{{ $hotel->id }}</td>
-        <td>{{ $hotel->nom }}</td>
-        <td>{{ $hotel->adresse }}</td>
-        <td>{{ $hotel->étoile }}</td>
-        <td>{{ $hotel->prix }}</td>
-    </tr>
-@endforeach
 </body>
 </html>
 
