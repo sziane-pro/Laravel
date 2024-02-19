@@ -37,9 +37,7 @@ class HotelController extends Controller
         $hotels->adresse = $request->get('adresse');
         $hotels->étoile = $request->get('étoile');
         $hotels->save();
-
         
-
         return redirect()->route('hotels.index');
     }
 

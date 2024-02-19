@@ -12,6 +12,7 @@ class Bedrooms extends Model
 
     protected $fillable = [
         'nom',
+        'hotelId',
         'nombrePlace',
         'prix',
     ];
