@@ -22,16 +22,34 @@
     <a href="{{ route('hotels.create') }}">Ajouter un hotel</a>
     <hr>
     <table> 
+        <thead>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Adresse</th>
+            <th>Étoile</th>
+        </thead>
+        <tbody>
+            @foreach ($hotels as $hotel)
+                <tr>
+                    <td style="padding:1rem;">{{ $hotel->id }}</td>
+                    <td style="padding:1rem;">{{ $hotel->nom }}</td>
+                    <td style="padding:1rem;">{{ $hotel->adresse }}</td>
+                    <td style="padding:1rem;">{{ $hotel->étoile }}</td>
+                    <td style="padding:1rem;"> <a href="{{ route('hotels.edit', $hotel->id) }}">Modifier</a></td>
+                    <td style="padding:1rem;">
+                        <form action="{{ route('hotels.destroy') }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" value="{{ $hotel->id }}" name="id">
+                            <button type="submit">Supprimer</button>
+                        </form>
+                    </td>
 
-        @foreach ($hotels as $hotel)
-            <tr>
-                <td>{{ $hotel->id }}</td>
-                <td>{{ $hotel->nom }}</td>
-                <td>{{ $hotel->adresse }}</td>
-                <td>{{ $hotel->étoile }}</td>
-                <td>{{ $hotel->prix }}</td>
-            </tr>
-        @endforeach
+                </tr>
+            @endforeach
+            
+        </tbody>
+
 
     </table>
     
