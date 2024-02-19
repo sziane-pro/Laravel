@@ -44,6 +44,7 @@
                             <button type="submit">Supprimer</button>
                         </form>
                     </td>
+                    <td style="padding:1rem;"><a href="{{ route('bedrooms.index', $hotel->id) }}">Ajouter une chambre</a></td>
 
                 </tr>
             @endforeach

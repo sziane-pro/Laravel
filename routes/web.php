@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
 
     //Gestion des chambres d'hotels
     Route::get('/hotel/{id}/bedroom', [BedroomController::class, 'create'])->name('bedrooms.create');
-    Route::get('/hotel/{id}/bedroom', [BedroomController::class, 'store'])->name('bedrooms.store');
+    Route::post('/hotel/{id}/bedroom', [BedroomController::class, 'store'])->name('bedrooms.store');
     Route::get('/hotel/{id}/bedrooms/', [BedroomController::class, 'index'])->name('bedrooms.index');
     //Gestion des hotels
     Route::get('/hotel', [HotelController::class, 'create'])->name('hotels.create');

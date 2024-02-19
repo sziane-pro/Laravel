@@ -17,6 +17,6 @@ class Bedrooms extends Model
     ];
 
     public function hotel(){
-        return $this->belongsTo(Hotels::class, 'hotel_id');
+        return $this->belongsTo(Hotels::class, 'hotelId');
     }
 }

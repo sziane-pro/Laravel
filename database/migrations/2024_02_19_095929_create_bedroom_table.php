@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('bedrooms', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('hotel_id')->nullable();
+            $table->unsignedBigInteger('hotelId')->nullable();
             $table->string('nom');
             $table->integer('nombrePlace');
             $table->float('prix');
             $table->timestamps();
-            $table->foreign('hotel_id')->references('id')->on('hotels');
+            $table->foreign('hotelId')->references('id')->on('hotels');
         });
     }
 
