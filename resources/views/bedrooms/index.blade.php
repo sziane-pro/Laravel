@@ -28,6 +28,7 @@
                 <td style="padding:1rem;">{{$bedroom->nom}}</td>
                 <td style="padding:1rem;">{{$bedroom->nombrePlace}}</td>
                 <td style="padding:1rem;">{{$bedroom->prix}}€</td>
+                <td style="padding:1rem;"><img src="{{ asset('storage/'.$bedroom->image) }}" alt="Image de la chambre" style="width: 100px; height: 100px;"></td>
                 <td style="padding:1rem;"><a href="{{ route('bedrooms.edit', ['id' => $hotel->id, 'id' => $bedroom->id]) }}">Modifier</a></td>
                 <td style="padding:1rem;">
                     <form action="{{ route('bedrooms.destroy', ['id' => $hotel->id, 'id' => $bedroom->id]) }}" method="POST">

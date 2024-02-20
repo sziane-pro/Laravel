@@ -24,8 +24,8 @@
         <input type="text" name="nombrePlace" id="nombrePlace" value="{{$bedrooms->nombrePlace}}">
         <label for="prix">Prix</label>
         <input type="text" name="prix" id="prix" value="{{$bedrooms->prix}}">
-        <!-- <label for="image">Image de la chambre:</label>
-        <input type="file" name="image" accept="image/*"> -->
+        <label for="image">Entrer une image</label>
+        <input type="file" name="image" id="image" value="{{$bedrooms->image}}">
         <br>
         <button type="submit">Ajouter</button>
     </form>

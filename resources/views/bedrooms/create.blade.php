@@ -14,7 +14,7 @@
 
     <hr>
 
-    <form action="{{route('bedrooms.store', $hotel->id)}}" method="POST">
+    <form action="{{route('bedrooms.store', $hotel->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="nom">Nom</label>
         <input type="text" name="nom" id="nom">
@@ -24,11 +24,18 @@
         <input type="text" name="nombrePlace" id="nombrePlace">
         <label for="prix">Prix</label>
         <input type="text" name="prix" id="prix">
-        <!-- <label for="image">Image de la chambre:</label>
-        <input type="file" name="image" accept="image/*"> -->
+        <label for="image">Image de la chambre:</label>
+        <input type="file" name="image">
         <br>
         <button type="submit">Ajouter</button>
     </form>
+
+    @if($errors->has('image'))
+    <div class="alert alert-danger">
+        {{ $errors->first('image') }}
+    </div>
+@endif
+
 
 </body>
 
