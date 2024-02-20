@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/hotel/{id}/bedrooms/', [BedroomController::class, 'index'])->name('bedrooms.index');
     Route::get('/bedrooms/{id}/edit',[BedroomController::class, 'edit'])->name('bedrooms.edit');
     Route::put('/bedrooms/{id}/update', [BedroomController::class, 'update'])->name('bedrooms.update');
+    Route::delete('/hotel/{id}/bedroom',[BedroomController::class, 'destroy'])->name('bedrooms.destroy');
     //Gestion des hotels
     Route::get('/hotel', [HotelController::class, 'create'])->name('hotels.create');
     Route::post('/hotel', [HotelController::class, 'store'])->name('hotels.store');

@@ -15,6 +15,7 @@ class Bedrooms extends Model
         'hotelId',
         'nombrePlace',
         'prix',
+        'image',
     ];
 
     public function hotel(){

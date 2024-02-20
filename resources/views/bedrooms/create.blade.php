@@ -24,6 +24,8 @@
         <input type="text" name="nombrePlace" id="nombrePlace">
         <label for="prix">Prix</label>
         <input type="text" name="prix" id="prix">
+        <!-- <label for="image">Image de la chambre:</label>
+        <input type="file" name="image" accept="image/*"> -->
         <br>
         <button type="submit">Ajouter</button>
     </form>

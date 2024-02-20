@@ -11,8 +11,8 @@ class BedroomController extends Controller
 
     public function index($id)
     {
-        $bedrooms = Bedrooms::all();
         $hotel = Hotels::find($id);
+        $bedrooms = Bedrooms::all();
         return view('bedrooms.index', compact('bedrooms', 'hotel'));
     }
     public function create($id)
@@ -46,4 +46,12 @@ class BedroomController extends Controller
         return redirect()->route('bedrooms.index', ['id' => $bedrooms->hotelId]);
     }
 
+
+    public function destroy(Request $request)
+    {
+        $bedroom = Bedrooms::find($request->get('id'));
+        $bedroom->delete();
+
+        return redirect()->route('bedrooms.index', ['id' => $bedroom->hotelId]);
+    }
 }

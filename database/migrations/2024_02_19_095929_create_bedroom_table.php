@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nom');
             $table->integer('nombrePlace');
             $table->float('prix');
+            $table->string('image')->nullable();
             $table->timestamps();
             $table->foreign('hotelId')->references('id')->on('hotels');
         });
