@@ -4,10 +4,7 @@
     margin-right: auto;
 }
 
-header{
-    max-height: 100px;
-}
-
-header .header-left .logo img{
-    width: 100%;
+.header{
+    display: flex;
+    justify-content: space-between;
 }

@@ -9,14 +9,8 @@
 </head>
 <body>
 
-<header class="global-wrapper">
-    <div class="header-left">
-        
-    </div>
-    <div class="header-right">
-        
-    </div>
-</header>
+<div class="global-wrapper">
+    <x-header/>
 
     <hr>
     <a href="{{ route('hotels.create') }}">Ajouter un hotel</a>
@@ -53,6 +47,8 @@
 
 
     </table>
+
+</div>
     
 </body>
 </html>
