@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Validation\Rule;
 use App\Models\Bedrooms;
 use App\Models\Reservations;
 use Illuminate\Http\Request;
@@ -29,7 +29,7 @@ class ReservationController extends Controller
     
         return view('reservations.create', compact('bedroom', 'hotel'));
     }
-    public function store(Request $request, $id)
+    public function store(Request $request, $bedroomId)
     {
         $request->validate([
             'nom' => 'required|string',
@@ -38,10 +38,20 @@ class ReservationController extends Controller
             'telephone' => 'required|string',
             'nombreAdulte' => 'required|integer',
             'nombreEnfant' => 'required|integer',
-            'dateDebut' => 'required|date',
+            'dateDebut' => [
+                'required',
+                'date',
+                // Validation personnalisée pour vérifier si la chambre est déjà réservée pour ces dates
+                Rule::exists('reservations')->where(function ($query) use ($bedroomId, $request) {
+                    return $query->where('bedroomId', $bedroomId)
+                        ->where(function ($query) use ($request) {
+                            $query->where('dateDebut', '<=', $request->dateFin)
+                                  ->where('dateFin', '>=', $request->dateDebut);
+                        });
+                }),
+            ],
             'dateFin' => 'required|date',
         ]);
-
         Reservations::create([
             'nom' => $request->nom,
             'prenom' => $request->prenom,
@@ -51,10 +61,10 @@ class ReservationController extends Controller
             'nombreEnfant' => $request->nombreEnfant,
             'dateDebut' => $request->dateDebut,
             'dateFin' => $request->dateFin,
-            'bedroomId' => $id,
+            'bedroomId' => $bedroomId,
         ]);
 
-        return redirect()->route('reservations.index', ['bedroom_id' => $id]);
+        return redirect()->route('reservations.index', ['bedroom_id' => $bedroomId]);
     }
 
     public function edit($id)
