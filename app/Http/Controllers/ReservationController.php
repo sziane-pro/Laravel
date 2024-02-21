@@ -55,6 +55,47 @@ class ReservationController extends Controller
         ]);
 
         return redirect()->route('reservations.index', ['bedroom_id' => $id]);
+    }
 
+    public function edit($id)
+    {
+        $reservations = Reservations::find($id);
+        return view('reservations.edit', compact('reservations'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nom' => 'required|string',
+            'prenom' => 'required|string',
+            'email' => 'required|email',
+            'telephone' => 'required|string',
+            'nombreAdulte' => 'required|integer',
+            'nombreEnfant' => 'required|integer',
+            'dateDebut' => 'required|date',
+            'dateFin' => 'required|date',
+        ]);
+
+        $reservation = Reservations::find($id);
+        $reservation->update([
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'email' => $request->email,
+            'telephone' => $request->telephone,
+            'nombreAdulte' => $request->nombreAdulte,
+            'nombreEnfant' => $request->nombreEnfant,
+            'dateDebut' => $request->dateDebut,
+            'dateFin' => $request->dateFin,
+        ]);
+
+        return redirect()->route('reservations.index', ['bedroom_id' => $reservation->bedroomId]);
+    }
+
+    public function destroy($id)
+    {
+        $reservation = Reservations::find($id);
+        $bedroomId = $reservation->bedroomId;
+        $reservation->delete();
+        return redirect()->route('reservations.index', ['bedroom_id' => $bedroomId]);
     }
 }

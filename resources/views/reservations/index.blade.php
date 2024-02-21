@@ -35,6 +35,9 @@
                 <td style="padding:1rem;">{{$reservation->nombreEnfant}}</td>
                 <td style="padding:1rem;">{{$reservation->dateDebut}}</td>
                 <td style="padding:1rem;">{{$reservation->dateFin}}</td>
+                <td style="padding:1rem;">
+                    <a class="btn btn-dark" href="{{ route('reservations.edit', ['id' => $reservation->id]) }}">Modifier</a>
+                </td>
             </tr>
             @endif
             @endforeach

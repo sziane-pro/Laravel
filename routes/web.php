@@ -31,7 +31,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/bedroom/{bedroom_id}/reservation', [ReservationController::class, 'create'])->name('reservations.create');
     Route::post('/bedroom/{bedroom_id}/reservation', [ReservationController::class, 'store'])->name('reservations.store');
     Route::get('/bedroom/{bedroom_id}/reservations', [ReservationController::class, 'index'])->name('reservations.index');
-
+    Route::get('/reservation/{id}/edit', [ReservationController::class, 'edit'])->name('reservations.edit');
+    Route::put('/reservation/{id}/update', [ReservationController::class, 'update'])->name('reservations.update');
+    Route::delete('/reservation/{id}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
     //Gestion des chambres d'hotels
     Route::get('/hotel/{id}/bedroom', [BedroomController::class, 'create'])->name('bedrooms.create');
     Route::post('/hotel/{id}/bedroom', [BedroomController::class, 'store'])->name('bedrooms.store');
