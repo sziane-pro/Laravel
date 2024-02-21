@@ -9,25 +9,39 @@
     <title>Chambres</title>
     <x-header/>
 
-    <h1>Modification d'une chambre</h1>
+    <div class="container mt-5">
+    <h1 class="mb-4">Modification d'une chambre</h1>
     <hr>
-
 
     <form action="{{ route('bedrooms.update', $bedrooms->id) }}" method="POST">
         @csrf
         @method('PUT')
 
-        <label for="nom">Nom</label>
-        <input type="text" name="nom" id="nom" value="{{ $bedrooms->nom }}">
-        <label for="nombrePlace">Nombre de Place</label>
-        <input type="text" name="nombrePlace" id="nombrePlace" value="{{$bedrooms->nombrePlace}}">
-        <label for="prix">Prix</label>
-        <input type="text" name="prix" id="prix" value="{{$bedrooms->prix}}">
-        <label for="image">Entrer une image</label>
-        <input type="file" name="image" id="image" value="{{$bedrooms->image}}">
-        <br>
-        <button type="submit">Ajouter</button>
+        <div class="form-group p-2 col-md-6">
+            <label for="nom">Nom</label>
+            <input type="text" class="form-control mt-2" id="nom" name="nom" value="{{ $bedrooms->nom }}" required>
+        </div>
+
+        <div class="form-group p-2 col-md-6">
+            <label for="nombrePlace">Nombre de Place</label>
+            <input type="text" class="form-control mt-2" id="nombrePlace" name="nombrePlace" value="{{ $bedrooms->nombrePlace }}" required>
+        </div>
+
+        <div class="form-group p-2 col-md-6">
+            <label for="prix">Prix</label>
+            <input type="text" class="form-control mt-2" id="prix" name="prix" value="{{ $bedrooms->prix }}" required>
+        </div>
+
+        <div class="form-group p-2 col-md-6 d-flex flex-column gap-3">
+            <label for="image">Entrer une image</label>
+            <input type="file" class="form-control-file" id="image" name="image">
+        </div>
+
+        <div class="form-group p-2 mt-3">
+            <button type="submit" class="btn btn-info">Modifier</button>
+        </div>
     </form>
+</div>
 
 </body>
 

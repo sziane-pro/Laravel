@@ -7,42 +7,53 @@
     <title>Réservations</title>
 
     <x-header/>
-    <a href="{{ route('reservations.create', ['bedroom_id' => $bedroom->id]) }}">Ajouter une réservation</a>
-    <table>
-        <thead>
+    <div class="container mt-5">
+    <a class="btn btn-primary mb-3" href="{{ route('reservations.create', ['bedroom_id' => $bedroom->id]) }}">Ajouter une réservation</a>
+
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
             <th>Id</th>
             <th>Chambre ID</th>
             <th>Nom</th>
             <th>Prénom</th>
             <th>Email</th>
             <th>Téléphone</th>
-            <th>Nombre d'adulte</th>
-            <th>Nombre d'enfant</th>
+            <th>Nombre d'adultes</th>
+            <th>Nombre d'enfants</th>
             <th>Date de début</th>
             <th>Date de fin</th>
+            <th>Actions</th>
         </thead>
         <tbody>
             @foreach ($reservations as $reservation)
-            @if ($reservation->bedroomId == $bedroom->id)
-            <tr>
-                <td style="padding:1rem;">{{$reservation->id}}</td>
-                <td style="padding:1rem;">{{$reservation->bedroomId}}</td>
-                <td style="padding:1rem;">{{$reservation->nom}}</td>
-                <td style="padding:1rem;">{{$reservation->prenom}}</td>
-                <td style="padding:1rem;">{{$reservation->email}}</td>
-                <td style="padding:1rem;">{{$reservation->telephone}}</td>
-                <td style="padding:1rem;">{{$reservation->nombreAdulte}}</td>
-                <td style="padding:1rem;">{{$reservation->nombreEnfant}}</td>
-                <td style="padding:1rem;">{{$reservation->dateDebut}}</td>
-                <td style="padding:1rem;">{{$reservation->dateFin}}</td>
-                <td style="padding:1rem;">
-                    <a class="btn btn-dark" href="{{ route('reservations.edit', ['id' => $reservation->id]) }}">Modifier</a>
-                </td>
-            </tr>
-            @endif
+                @if ($reservation->bedroomId == $bedroom->id)
+                    <tr>
+                        <td>{{$reservation->id}}</td>
+                        <td>{{$reservation->bedroomId}}</td>
+                        <td>{{$reservation->nom}}</td>
+                        <td>{{$reservation->prenom}}</td>
+                        <td>{{$reservation->email}}</td>
+                        <td>{{$reservation->telephone}}</td>
+                        <td>{{$reservation->nombreAdulte}}</td>
+                        <td>{{$reservation->nombreEnfant}}</td>
+                        <td>{{$reservation->dateDebut}}</td>
+                        <td>{{$reservation->dateFin}}</td>
+                        <td class="d-flex flex-column align-items-center gap-3">
+                            <a class="btn btn-dark" href="{{ route('reservations.edit', ['id' => $reservation->id]) }}">Modifier</a>
+                            <form action="{{ route('reservations.destroy', ['id' => $reservation->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" value="{{ $reservation->id }}" name="id">
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endif
             @endforeach
         </tbody>
     </table>
+</div>
+
 
     <hr>
 </body>
