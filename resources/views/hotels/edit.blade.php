@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../resources/css/hotels-index.css">
     <title>Hotels</title>
-</head>
-<body>
-
+<x-header/>
     <h1>Modification d'un hotel</h1>
     <hr>
 

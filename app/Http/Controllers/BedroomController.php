@@ -26,7 +26,7 @@ class BedroomController extends Controller
             'nom' => 'required|string',
             'nombrePlace' => 'required|integer',
             'prix' => 'required|numeric',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,avif|max:2048',
         ]);
 
         $imagePath = $request->file('image')->store('uploads', 'public');

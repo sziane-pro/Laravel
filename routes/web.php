@@ -3,6 +3,7 @@
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BedroomController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
+    //Gestion des réservations
+    Route::get('/bedroom/{bedroom_id}/reservation', [ReservationController::class, 'create'])->name('reservations.create');
+    Route::post('/bedroom/{bedroom_id}/reservation', [ReservationController::class, 'store'])->name('reservations.store');
+    Route::get('/bedroom/{bedroom_id}/reservations', [ReservationController::class, 'index'])->name('reservations.index');
 
     //Gestion des chambres d'hotels
     Route::get('/hotel/{id}/bedroom', [BedroomController::class, 'create'])->name('bedrooms.create');

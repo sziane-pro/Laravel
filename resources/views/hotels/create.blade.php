@@ -6,8 +6,7 @@
     <link rel="stylesheet" href="../resources/css/hotels-index.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hotels</title>
-</head>
-<body>
+    <x-header/>
     <h1>Ajout d'un hotel</h1>
 
     <hr>

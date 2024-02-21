@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../resources/css/hotels-index.css">
     <title>{{$hotel->nom}} | Chambres</title>
-</head>
 
-<body>
     <x-header/>
     <a href="{{ route('bedrooms.create', $hotel->id)}}">Ajouter une chambre</a>
     <table>
@@ -31,7 +29,8 @@
                 <td style="padding:1rem;">{{$bedroom->nombrePlace}}</td>
                 <td style="padding:1rem;">{{$bedroom->prix}}€</td>
                 <td style="padding:1rem;"><img src="{{ asset('storage/'.$bedroom->image) }}" alt="Image de la chambre" style="width: 100px; height: 100px;"></td>
-                <td style="padding:1rem;"><a href="{{ route('bedrooms.edit', ['id' => $hotel->id, 'id' => $bedroom->id]) }}">Modifier</a></td>
+                <td style="padding:1rem;"><a class="btn btn-dark" href="{{ route('reservations.index', ['id' => $hotel->id, 'bedroom_id' => $bedroom->id]) }}">Voir les réservations</a><br><a class="btn btn-dark" href="{{route('reservations.create', ['id' => $hotel->id, 'bedroom_id' => $bedroom->id])}}">Ajouter une réservation</a></td>
+                <td style="padding:1rem;"><a class="btn btn-dark" href="{{ route('bedrooms.edit', ['id' => $hotel->id, 'id' => $bedroom->id]) }}">Modifier</a></td>
                 <td style="padding:1rem;">
                     <form action="{{ route('bedrooms.destroy', ['id' => $hotel->id, 'id' => $bedroom->id]) }}" method="POST">
                         @csrf
@@ -48,7 +47,7 @@
 
     <hr>
 
-    <a href="{{route('hotels.index')}}">Retour aux hotels</a>
+    <a class="btn-primary" href="{{route('hotels.index')}}">Retour aux hotels</a>
 
 </body>
 

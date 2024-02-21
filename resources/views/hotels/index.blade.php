@@ -6,11 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../resources/css/hotels-index.css">
     <title>HOTELS</title>
-</head>
-<body>
 
-<div class="global-wrapper">
+
     <x-header/>
+<div class="global-wrapper">
 
     <hr>
     <a href="{{ route('hotels.create') }}">Ajouter un hotel</a>
